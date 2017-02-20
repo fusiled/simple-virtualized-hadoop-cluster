@@ -1,4 +1,11 @@
 
+#Simple Virtualized Hadoop Cluster
+
+##Requirements
+
+Ansible and ssh
+
+##Steps
 
 1. Launch run.sh and wait for the setup of the machines
 2. Log in mas machine with ssh with user vagrant. mas should be at 
