@@ -1,0 +1,10 @@
+#
+# /etc/hosts: static lookup table for host names
+#
+
+#<ip-address>	<hostname.domain.org>	<hostname>
+127.0.0.1	localhost.localdomain	localhost
+::1		localhost.localdomain	localhost
+192.168.52.4    master.localdomain      mas
+192.168.52.5    no1.localdomain       no1
+192.168.52.6    no2.localdomain       no2
