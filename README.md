@@ -3,7 +3,7 @@
 
 ##Requirements
 
-Ansible and ssh
+vagrant, ssh and virtualbox (Version 5 or higher) on host machine.
 
 ##Steps
 
