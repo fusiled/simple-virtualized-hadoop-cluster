@@ -13,8 +13,7 @@ sudo yum install unzip wget git -y
 sudo yum-config-manager --add-repo https://archive.cloudera.com/cdh5/redhat/5/x86_64/cdh/cloudera-cdh5.repo
 sudo yum-config-manager --enable cloudera-cdh5
 
-echo "retrieving oracle-java from mas and installing it"
-scp  -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null centos@mas:~/jdk-8u121-linux-x64.rpm .
+echo "installing java"
 sudo yum localinstall jdk-8u121-linux-x64.rpm -y
 
 

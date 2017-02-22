@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
     mas.vm.provision "file", source: "files/ansAll", destination: "~/ansAll"
     mas.vm.provision "file", source: "files/ansHosts", destination: "~/ansHosts"
     mas.vm.provision "file", source: "files/key_scan.sh", destination: "~/key_scan.sh"
+    mas.vm.provision "file", source: "files/jdk-8u121-linux-x64.rpm", destination: "~/jdk-8u121-linux-x64.rpm"
     mas.vm.provision "shell",inline: "sudo mv -f /home/vagrant/sshd_config /etc/ssh/sshd_config"
     mas.vm.provider "virtualbox" do |v|
       v.name = "mas"
@@ -41,6 +42,7 @@ Vagrant.configure("2") do |config|
     no1.vm.provision "file", source: "keys/id_rsa", destination: "~/.ssh/id_rsa"
     no1.vm.provision "file", source: "files/sshd_config", destination: "~/sshd_config"
     no1.vm.provision "file", source: "files/hosts", destination: "~/hosts"
+    no1.vm.provision "file", source: "files/jdk-8u121-linux-x64.rpm", destination: "~/jdk-8u121-linux-x64.rpm"
     no1.vm.provision "shell",inline: "sudo mv -f /home/vagrant/sshd_config /etc/ssh/sshd_config"
     no1.vm.provider "virtualbox" do |v|
       v.name = "no1"
@@ -61,6 +63,7 @@ Vagrant.configure("2") do |config|
     no2.vm.provision "file", source: "keys/id_rsa", destination: "~/.ssh/id_rsa"
     no2.vm.provision "file", source: "files/sshd_config", destination: "~/sshd_config"
     no2.vm.provision "file", source: "files/hosts", destination: "~/hosts"
+    no2.vm.provision "file", source: "files/jdk-8u121-linux-x64.rpm", destination: "~/jdk-8u121-linux-x64.rpm"
     no2.vm.provision "shell",inline: "sudo mv -f /home/vagrant/sshd_config /etc/ssh/sshd_config"
     no2.vm.provider "virtualbox" do |v|
       v.name = "no2"
