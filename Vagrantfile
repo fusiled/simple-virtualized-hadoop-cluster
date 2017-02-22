@@ -7,6 +7,29 @@ NODE2_IP  = '192.168.52.6'
 
 Vagrant.configure("2") do |config|
 
+  config.vm.define "mas" do |mas|
+    mas.vm.hostname = "mas"
+    mas.vm.box = "bento/centos-6.7"
+    mas.vm.network "private_network", ip: MASTER_IP
+    mas.ssh.insert_key = false
+    mas.ssh.private_key_path = ["keys/id_rsa", "~/.vagrant.d/insecure_private_key"]
+    mas.vm.provision "file", source: "keys/id_rsa.pub", destination: "~/.ssh/authorized_keys"
+    mas.vm.provision "file", source: "keys/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
+    mas.vm.provision "file", source: "keys/id_rsa", destination: "~/.ssh/id_rsa"
+    mas.vm.provision "file", source: "files/sshd_config", destination: "~/sshd_config"
+    mas.vm.provision "file", source: "files/hosts", destination: "~/hosts"
+    mas.vm.provision "file", source: "files/ansAll", destination: "~/ansAll"
+    mas.vm.provision "file", source: "files/ansHosts", destination: "~/ansHosts"
+    mas.vm.provision "file", source: "files/key_scan.sh", destination: "~/key_scan.sh"
+    mas.vm.provision "shell",inline: "sudo mv -f /home/vagrant/sshd_config /etc/ssh/sshd_config"
+    mas.vm.provider "virtualbox" do |v|
+      v.name = "mas"
+      v.cpus = 1
+      v.memory = 512
+    end
+    mas.vm.provision "shell", path: "bootstrapMaster.sh"
+  end
+
   config.vm.define "no1" do |no1|
     no1.vm.hostname = "no1"
     no1.vm.box = "bento/centos-6.7"
@@ -47,26 +70,5 @@ Vagrant.configure("2") do |config|
     no2.vm.provision "shell", path: "bootstrapNode.sh"
   end
 
-  config.vm.define "mas" do |mas|
-    mas.vm.hostname = "mas"
-    mas.vm.box = "bento/centos-6.7"
-    mas.vm.network "private_network", ip: MASTER_IP
-    mas.ssh.insert_key = false
-    mas.ssh.private_key_path = ["keys/id_rsa", "~/.vagrant.d/insecure_private_key"]
-    mas.vm.provision "file", source: "keys/id_rsa.pub", destination: "~/.ssh/authorized_keys"
-    mas.vm.provision "file", source: "keys/id_rsa.pub", destination: "~/.ssh/id_rsa.pub"
-    mas.vm.provision "file", source: "keys/id_rsa", destination: "~/.ssh/id_rsa"
-    mas.vm.provision "file", source: "files/sshd_config", destination: "~/sshd_config"
-    mas.vm.provision "file", source: "files/hosts", destination: "~/hosts"
-    mas.vm.provision "file", source: "files/ansAll", destination: "~/ansAll"
-    mas.vm.provision "file", source: "files/ansHosts", destination: "~/ansHosts"
-    mas.vm.provision "shell",inline: "sudo mv -f /home/vagrant/sshd_config /etc/ssh/sshd_config"
-    mas.vm.provider "virtualbox" do |v|
-      v.name = "mas"
-      v.cpus = 1
-      v.memory = 512
-    end
-    mas.vm.provision "shell", path: "bootstrapMaster.sh"
-  end
 
 end
