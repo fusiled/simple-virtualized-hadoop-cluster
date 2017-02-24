@@ -15,7 +15,8 @@ ssh -i $KEYS_DIR/id_rsa -p $mas_port vagrant@127.0.0.1 "./key_scan.sh"
 
 echo "++++VAGRANT INSTALLATION COMPLETED!++++"
 
-ssh -i $KEYS_DIR/id_rsa -p $mas_port vagrant@127.0.0.1 "cd ansible-cloudera-hadoop && ansible-playbook -i hosts site.yaml"
-
 echo "Please, log into mas machine with the following command:"
 echo "   ssh -p $mas_port vagrant@127.0.0.1 -i $KEYS_DIR/id_rsa"
+echo "then execute the two commands below to complete installation:"
+echo "   cd ansible-cloudera-hadoop"
+echo "   ansible-playbook -i hosts site.yaml""

@@ -9,7 +9,6 @@ echo "SELINUX=disabled" > /etc/selinux/config
 echo "SELINUXTYPE=targeted" >> /etc/selinux/config
 #adding repo
 sudo yum install epel-release yum-utils -y
-sudo yum install unzip wget git -y
 sudo yum-config-manager --add-repo https://archive.cloudera.com/cdh5/redhat/5/x86_64/cdh/cloudera-cdh5.repo
 sudo yum-config-manager --enable cloudera-cdh5
 

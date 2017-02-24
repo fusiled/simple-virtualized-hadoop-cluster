@@ -30,7 +30,8 @@ Vagrant.configure("2") do |config|
     end
     mas.vm.provision "shell", path: "bootstrapMaster.sh"
   end
-
+  
+=begin
   config.vm.define "no1" do |no1|
     no1.vm.hostname = "no1"
     no1.vm.box = "bento/centos-6.7"
@@ -72,6 +73,6 @@ Vagrant.configure("2") do |config|
     end
     no2.vm.provision "shell", path: "bootstrapNode.sh"
   end
-
+=end
 
 end
